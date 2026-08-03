@@ -1,25 +1,46 @@
-<div class="calculator__card">
-    <h2 class="calculator__title">Insurance Calculator</h2>
+<form [formGroup]="calculatorForm" class="calculator__form">
+    <h2 class="calculator__title">Insurance Premium Calculator</h2>
     
-    <p class="calculator__base">Base Price: {{ premiumService.basePrice }} PLN</p>
+    <p class="calculator__base">Base Price: {{ premiumService.basePrice | currency:'PLN':'symbol-narrow' }}</p>
+  
+    <div class="calculator__group">
+      <label class="calculator__label" for="coverage-input">Coverage Amount (PLN):</label>
+      <input 
+        id="coverage-input"
+        type="number"
+        class="calculator__input"
+        formControlName="coverage"
+        [attr.aria-invalid]="coverageControl?.invalid && coverageControl?.touched"
+        aria-describedby="coverage-error"
+      >
+      
+      @if (coverageControl?.invalid && coverageControl?.touched) {
+        <span id="coverage-error" class="calculator__error" role="alert">
+          @if (coverageControl?.hasError('min')) {
+            Minimum coverage is 50,000 PLN.
+          }
+          @if (coverageControl?.hasError('max')) {
+            Maximum coverage is 1,000,000 PLN.
+          }
+        </span>
+      }
+    </div>
   
     <div class="calculator__group">
       <label class="calculator__label" for="risk-select">Select Risk Level (Medical History):</label>
-      
       <select 
         id="risk-select"
         class="calculator__select"
-        [ngModel]="premiumService.riskMultiplier()" 
-        (ngModelChange)="premiumService.updateRisk($event)">
+        formControlName="riskLevel">
         <option [ngValue]="1.0">Low Risk</option>
         <option [ngValue]="1.2">Medium Risk</option>
         <option [ngValue]="1.6">High Risk</option>
       </select>
     </div>
   
-    @if (premiumService.finalPremium() > 1500) {
+    @if (premiumService.finalPremium() > 2500) {
       <div class="calculator__alert calculator__alert--warning" role="alert">
-        Additional medical verification is required for this amount.
+        Additional medical verification is required for this premium amount.
       </div>
     } @else {
       <div class="calculator__alert calculator__alert--success" role="status">
@@ -27,5 +48,7 @@
       </div>
     }
   
-    <h3 class="calculator__total">Total Premium: {{ premiumService.finalPremium() }} PLN</h3>
-  </div>
+    <h3 class="calculator__total">
+      Total Premium: {{ premiumService.finalPremium() | currency:'PLN':'symbol-narrow' }}
+    </h3>
+  </form>

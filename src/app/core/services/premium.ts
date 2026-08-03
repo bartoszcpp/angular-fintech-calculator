@@ -1,16 +1,20 @@
 import { Injectable, signal, computed } from '@angular/core';
 
-// @Injectable => this class can be injected into components
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' }) 
 export class PremiumService {
-  // signal = useState
   basePrice = 1000;
-  riskMultiplier = signal(1.0);
+  
+  riskMultiplier = signal<number>(1.0);
+  coverageAmount = signal<number>(100000); 
 
-  // computed value = useMemo (when riskMultiplier changes)
-  finalPremium = computed(() => this.basePrice * this.riskMultiplier());
+  finalPremium = computed(() => {
+    const baseCalculated = this.basePrice * this.riskMultiplier();
+    const coveragePremium = this.coverageAmount() * 0.005;
+    return baseCalculated + coveragePremium;
+  });
 
-  updateRisk(multiplier: number) {
-    this.riskMultiplier.set(multiplier);
+  updateCalculations(risk: number, coverage: number): void {
+    this.riskMultiplier.set(risk);
+    this.coverageAmount.set(coverage);
   }
 }
