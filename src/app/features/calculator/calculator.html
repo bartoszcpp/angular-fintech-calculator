@@ -1,0 +1,31 @@
+<div class="calculator__card">
+    <h2 class="calculator__title">Insurance Calculator</h2>
+    
+    <p class="calculator__base">Base Price: {{ premiumService.basePrice }} PLN</p>
+  
+    <div class="calculator__group">
+      <label class="calculator__label" for="risk-select">Select Risk Level (Medical History):</label>
+      
+      <select 
+        id="risk-select"
+        class="calculator__select"
+        [ngModel]="premiumService.riskMultiplier()" 
+        (ngModelChange)="premiumService.updateRisk($event)">
+        <option [ngValue]="1.0">Low Risk</option>
+        <option [ngValue]="1.2">Medium Risk</option>
+        <option [ngValue]="1.6">High Risk</option>
+      </select>
+    </div>
+  
+    @if (premiumService.finalPremium() > 1500) {
+      <div class="calculator__alert calculator__alert--warning" role="alert">
+        Additional medical verification is required for this amount.
+      </div>
+    } @else {
+      <div class="calculator__alert calculator__alert--success" role="status">
+        Policy ready to issue immediately.
+      </div>
+    }
+  
+    <h3 class="calculator__total">Total Premium: {{ premiumService.finalPremium() }} PLN</h3>
+  </div>

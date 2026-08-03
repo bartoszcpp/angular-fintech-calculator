@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
+import { CalculatorComponent } from './features/calculator/calculator'; 
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [CalculatorComponent],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
   protected readonly title = signal('insurance-dashboard');
