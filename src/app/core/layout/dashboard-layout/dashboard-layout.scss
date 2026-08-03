@@ -1,0 +1,131 @@
+:host {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  
+  .layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    height: 100%;
+  
+    &__sidebar {
+      background-color: #0f172a;
+      color: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid #1e293b;
+    }
+  
+    &__brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+      padding: 0 0.75rem;
+    }
+  
+    &__logo {
+      width: 24px;
+      height: 24px;
+      background: linear-gradient(135deg, #38bdf8, #3b82f6);
+      border-radius: 6px;
+    }
+  
+    &__brand-name {
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 1.125rem;
+      letter-spacing: -0.02em;
+    }
+  
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      flex: 1;
+    }
+  
+    &__settings {
+      margin-top: auto;
+      border-top: 1px solid #1e293b;
+      padding-top: 1rem;
+    }
+  
+    &__link {
+      color: inherit;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+  
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: #f8fafc;
+      }
+  
+      &--active {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+      }
+    }
+  
+    &__main {
+      display: flex;
+      flex-direction: column;
+      background-color: #f7f9fc;
+      overflow-y: auto;
+    }
+  
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      background-color: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+    }
+  
+    &__page-title {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #111827;
+      letter-spacing: -0.02em;
+    }
+  
+    &__user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  
+    &__user-role {
+      font-size: 0.875rem;
+      color: #6b7280;
+      font-weight: 500;
+    }
+  
+    &__avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid #e2e8f0;
+    }
+  
+    &__content {
+      padding: 2.5rem;
+      max-width: 1200px;
+    }
+  }
