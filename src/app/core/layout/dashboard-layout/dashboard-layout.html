@@ -1,33 +1,34 @@
 <div class="layout">
-    <aside class="layout__sidebar">
-      <div class="layout__brand">
-        <div class="layout__logo"></div>
-        <span class="layout__brand-name">ShieldPay CMS</span>
+  <aside class="layout__sidebar">
+    <div class="layout__brand">
+      <div class="layout__logo"></div>
+      <span class="layout__brand-name">ShieldPay CMS</span>
+    </div>
+
+    <nav class="layout__nav">
+      <a href="#" class="layout__link layout__link--active">New Quote</a>
+      <a href="#" class="layout__link">Policies</a>
+      <a href="#" class="layout__link">Claims</a>
+      <a href="#" class="layout__link">Customers</a>
+    </nav>
+
+    <div class="layout__settings">
+      <a href="#" class="layout__link">Settings</a>
+    </div>
+  </aside>
+
+  <main class="layout__main">
+    <header class="layout__header">
+      <h1 class="layout__page-title">Issue New Policy</h1>
+      <div class="layout__user">
+        <span class="layout__user-role">Agent</span>
+        <div class="layout__avatar">IN</div>
       </div>
-      
-      <nav class="layout__nav">
-        <a href="#" class="layout__link layout__link--active">New Quote</a>
-        <a href="#" class="layout__link">Policies</a>
-        <a href="#" class="layout__link">Claims</a>
-        <a href="#" class="layout__link">Customers</a>
-      </nav>
-  
-      <div class="layout__settings">
-        <a href="#" class="layout__link">Settings</a>
-      </div>
-    </aside>
-  
-    <main class="layout__main">
-      <header class="layout__header">
-        <h1 class="layout__page-title">Issue New Policy</h1>
-        <div class="layout__user">
-          <span class="layout__user-role">Agent</span>
-          <div class="layout__avatar">IN</div>
-        </div>
-      </header>
-  
-      <div class="layout__content">
-        <ng-content></ng-content>
-      </div>
-    </main>
-  </div>
+    </header>
+
+    <div class="layout__content">
+      <ng-content></ng-content>
+    </div>
+  </main>
+  <app-toast></app-toast>
+</div>
