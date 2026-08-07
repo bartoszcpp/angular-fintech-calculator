@@ -4,11 +4,11 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { CurrencyPipe } from '@angular/common';
 import { PremiumService } from '../../core/services/premium';
 import { ToastService } from '../../core/services/toast';
-
+import { RiskSelectorComponent } from '../../shared/components/risk-selector/risk-selector';
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [ReactiveFormsModule, CurrencyPipe],
+  imports: [ReactiveFormsModule, CurrencyPipe, RiskSelectorComponent],
   templateUrl: './calculator.html',
   styleUrl: './calculator.scss',
 })

@@ -29,12 +29,8 @@
   </div>
 
   <div class="calculator__group">
-    <label class="calculator__label" for="risk-select">Select Risk Level (Medical History):</label>
-    <select id="risk-select" class="calculator__select" formControlName="riskLevel">
-      <option [ngValue]="1.0">Low Risk</option>
-      <option [ngValue]="1.2">Medium Risk</option>
-      <option [ngValue]="1.6">High Risk</option>
-    </select>
+    <label class="calculator__label">Select Risk Level (Medical History):</label>
+    <app-risk-selector formControlName="riskLevel"></app-risk-selector>
   </div>
 
   @if (premiumService.finalPremium() > 2500) {
